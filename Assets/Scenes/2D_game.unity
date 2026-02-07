@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 1284927873}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1324,6 +1324,7 @@ GameObject:
   - component: {fileID: 1986497606}
   - component: {fileID: 1986497607}
   - component: {fileID: 1986497608}
+  - component: {fileID: 1986497609}
   m_Layer: 0
   m_Name: Spawn rock
   m_TagString: Untagged
@@ -1360,7 +1361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rockPrefab: {fileID: 1889665249041191773, guid: 262805b220e8f75478d801bc34dd163b, type: 3}
   player: {fileID: 1284927863}
-  SpawnRockInterval: 2
+  spawnRockInterval: 2
 --- !u!114 &1986497608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,6 +1376,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1284927863}
   platformPrefab: {fileID: 8038155960512866371, guid: 00937dd9531fbdb4eb0fd2a0e3f2b7be, type: 3}
+--- !u!114 &1986497609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986497605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efcbb40cf5904d4da7bc10fe2860458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOver: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
