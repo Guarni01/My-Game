@@ -10,12 +10,14 @@ public class RandomRock : MonoBehaviour
     private GameOver gameOverScript;
     private GameObject spawn;
     private Coroutine Coroutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spawn = GameObject.Find("Spawn rock");
         gameOverScript = spawn.GetComponent<GameOver>();
         Coroutine = StartCoroutine(SpawnRockRoutine());
+
     }
 
     // Update is called once per frame
