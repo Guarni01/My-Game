@@ -39,6 +39,15 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
         }
+        if (collision.gameObject.CompareTag("Rock"))
+        {
+            Destroy(gameObject);
+            Debug.Log("Game Over");
+        }
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            isOnGround = true;
+        }
     }
 }
 
