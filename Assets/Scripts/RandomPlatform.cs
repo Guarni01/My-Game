@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,10 +10,14 @@ public class RandomPlatform : MonoBehaviour
     private float minYPosition = 1f;
     private float maxYPosition = 3.5f;
     public float DestroyPlatformDelay = 5f;
+    private GameOver gameOverScript;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
+        gameOverScript = FindFirstObjectByType<GameOver>();
         SpawnPlatform();
         StartCoroutine(DestroyPlatformRoutine());
     }
@@ -20,7 +25,10 @@ public class RandomPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (gameOverScript.gameOver == true)
+        {
+            StopAllCoroutines();
+        }
     }
 
     void SpawnPlatform()
@@ -33,8 +41,8 @@ public class RandomPlatform : MonoBehaviour
     }
     void SpawnSinglePlatform()
     {
-        float randomY = Random.Range(minYPosition, maxYPosition);
-        float randomX = Random.Range(-SpawnXPosition, SpawnXPosition);
+        float randomY = UnityEngine.Random.Range(minYPosition, maxYPosition);
+        float randomX = UnityEngine.Random.Range(-SpawnXPosition, SpawnXPosition);
         Vector3 spawnPosition = new Vector3(randomX, randomY, player.transform.position.z);
         Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
     }
@@ -49,7 +57,7 @@ public class RandomPlatform : MonoBehaviour
             GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
             if (platforms.Length > 0)
             {
-                int randomIndex = Random.Range(0, platforms.Length);
+                int randomIndex = UnityEngine.Random.Range(0, platforms.Length);
                 Destroy(platforms[randomIndex]);
 
                 SpawnSinglePlatform();

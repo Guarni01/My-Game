@@ -8,14 +8,13 @@ public class RandomRock : MonoBehaviour
     public GameObject player;
     public float spawnRockInterval = 2.0f;
     private GameOver gameOverScript;
-    private GameObject spawn;
     private Coroutine Coroutine;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawn = GameObject.Find("Spawn rock");
-        gameOverScript = spawn.GetComponent<GameOver>();
+        
+        gameOverScript = FindFirstObjectByType<GameOver>();
         Coroutine = StartCoroutine(SpawnRockRoutine());
 
     }

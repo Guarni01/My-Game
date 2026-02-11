@@ -3,7 +3,6 @@ using UnityEngine;
 public class Rock : MonoBehaviour
 {
     private GameOver gameOverScript;
-    private GameObject spawn;
     private GameManager gameManager;
     public int scoreValue ;
 
@@ -11,8 +10,8 @@ public class Rock : MonoBehaviour
     void Start()
     {
 
-        spawn = GameObject.Find("Spawn rock");
-        gameOverScript = spawn.GetComponent<GameOver>();
+        
+        gameOverScript =FindFirstObjectByType<GameOver>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
     }
