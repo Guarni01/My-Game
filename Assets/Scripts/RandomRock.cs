@@ -9,19 +9,28 @@ public class RandomRock : MonoBehaviour
     public float spawnRockInterval = 2.0f;
     private GameOver gameOverScript;
     private Coroutine Coroutine;
+    private GameManager gameManager;
+    private bool started = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
         gameOverScript = FindFirstObjectByType<GameOver>();
-        Coroutine = StartCoroutine(SpawnRockRoutine());
+        gameManager = FindFirstObjectByType<GameManager>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.gameStarted && !started)
+        {
+            started = true;
+            Coroutine = StartCoroutine(SpawnRockRoutine());
+        }
+
+
       if (gameOverScript.gameOver == true)
         {
             StopCoroutine(Coroutine);

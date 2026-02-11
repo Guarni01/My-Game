@@ -10,21 +10,25 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = true;
     public float horizontalInput;
     private GameOver gameOverScript;
-    
+    private GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         PlRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
-       
+        gameManager = FindFirstObjectByType<GameManager>();
         gameOverScript =FindFirstObjectByType<GameOver>();
 
     }
 
     // Update is called once per frame
     void Update()
-    {   if (gameOverScript.gameOver == false)
+    {
+        if (!gameManager.gameStarted) return;
+
+
+        if (gameOverScript.gameOver == false)
         {
 
             moveHR = Input.GetAxis("Horizontal");
@@ -38,7 +42,9 @@ public class PlayerController : MonoBehaviour
                 isOnGround = false;
             }
         }
-        
+      
+       
+
     }
     void OnCollisionEnter(Collision collision)
     {

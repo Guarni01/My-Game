@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
-{
+{   
+    public bool gameStarted = false;
     private int score;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+    public void StartGame()
+    {
+        gameStarted = true;
     }
     public void AddRockPoints (int scoreToAdd)
     {

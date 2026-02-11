@@ -11,20 +11,28 @@ public class RandomPlatform : MonoBehaviour
     private float maxYPosition = 3.5f;
     public float DestroyPlatformDelay = 5f;
     private GameOver gameOverScript;
-   
+    private GameManager gameManager; 
+    private bool started = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
         gameOverScript = FindFirstObjectByType<GameOver>();
-        SpawnPlatform();
-        StartCoroutine(DestroyPlatformRoutine());
+        gameManager = FindFirstObjectByType<GameManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gameManager.gameStarted && !started)
+        {
+            started = true;
+            SpawnPlatform();
+            StartCoroutine(DestroyPlatformRoutine());
+        }
         if (gameOverScript.gameOver == true)
         {
             StopAllCoroutines();
