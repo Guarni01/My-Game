@@ -4,7 +4,9 @@ public class Rock : MonoBehaviour
 {
     private GameOver gameOverScript;
     private GameManager gameManager;
-    public int scoreValue ;
+    public int scoreValue;
+    public AudioClip rockHitSound;
+    private AudioSource rockAudio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,6 +15,7 @@ public class Rock : MonoBehaviour
         
         gameOverScript =FindFirstObjectByType<GameOver>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        rockAudio = GetComponent<AudioSource>();
 
     }
 
@@ -30,6 +33,7 @@ public class Rock : MonoBehaviour
         {
             gameOverScript.gameOver = true;
             Debug.Log("Game Over");
+            rockAudio.PlayOneShot(rockHitSound, 1.0f);
         }
     }
     private void OnDestroy()

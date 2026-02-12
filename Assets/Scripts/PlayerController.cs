@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     private GameOver gameOverScript;
     private GameManager gameManager;
+    public AudioClip jumpSound;
+    private AudioSource playerAudio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
         gameManager = FindFirstObjectByType<GameManager>();
         gameOverScript =FindFirstObjectByType<GameOver>();
+        playerAudio = GetComponent<AudioSource>();
 
     }
 
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
             {
                 PlRb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
                 isOnGround = false;
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
             }
         }
       
