@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateScoreText();
         gameOver = FindFirstObjectByType<GameOver>();
+        scoreText.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -31,8 +32,8 @@ public class GameManager : MonoBehaviour
         {
             gameOverText.gameObject.SetActive(false);
         }
-
-
+       
+      
     }
     public void StartGame()
     {
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
     }
     public void AddRockPoints (int scoreToAdd)
     {
+        if (gameOver.gameOver) return;
+
         score += scoreToAdd;
         UpdateScoreText();
     }
