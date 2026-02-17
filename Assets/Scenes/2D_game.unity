@@ -1622,10 +1622,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  moveHR: 0
   jumpForce: 10
   gravityModifier: 1.5
   isOnGround: 1
-  horizontalInput: 0
   jumpSound: {fileID: 8300000, guid: fc09d7d6a4496f54692bfbccb1451129, type: 3}
 --- !u!54 &1284927871
 Rigidbody:

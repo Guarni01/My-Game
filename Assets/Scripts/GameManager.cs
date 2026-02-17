@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
-{   
+{
     public bool gameStarted = false;
     private int score;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     private GameOver gameOver;
     public Button restartButton;
-  
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,22 +32,28 @@ public class GameManager : MonoBehaviour
         {
             gameOverText.gameObject.SetActive(false);
         }
-       
-      
+
+
     }
     public void StartGame()
     {
         gameStarted = true;
     }
-    public void AddRockPoints (int scoreToAdd)
+    public void AddRockPoints(int scoreToAdd)
     {
         if (gameOver.gameOver) return;
 
         score += scoreToAdd;
         UpdateScoreText();
     }
+    public void LosePoints(int scoreToLose)
+    {
 
-    private void UpdateScoreText()
+        score -= scoreToLose;
+        UpdateScoreText();
+    }
+
+    public void UpdateScoreText()
     {
 
         scoreText.text = "Score: " + score;

@@ -8,18 +8,18 @@ public class Start_Button : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public void OnStartPressed() 
+    public void OnStartPressed()
     {
-       gameManager.StartGame(); 
-       gameObject.SetActive(false);
-       titleText.SetActive(false);
+        gameManager.StartGame();
+        gameObject.SetActive(false);
+        titleText.SetActive(false);
     }
 }

@@ -15,7 +15,7 @@ public class RandomRock : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         gameOverScript = FindFirstObjectByType<GameOver>();
         gameManager = FindFirstObjectByType<GameManager>();
 
@@ -31,7 +31,7 @@ public class RandomRock : MonoBehaviour
         }
 
 
-      if (gameOverScript.gameOver == true)
+        if (gameOverScript.gameOver == true)
         {
             StopCoroutine(Coroutine);
         }
@@ -42,7 +42,7 @@ public class RandomRock : MonoBehaviour
     {
         while (true)
         {
-            Vector3 randomPos = new Vector3(Random.Range(SpawnXPosition,-SpawnXPosition),5, player.transform.position.z);
+            Vector3 randomPos = new Vector3(Random.Range(SpawnXPosition, -SpawnXPosition), 5, player.transform.position.z);
             Instantiate(rockPrefab, randomPos, Quaternion.identity);
             yield return new WaitForSeconds(spawnRockInterval);
         }
