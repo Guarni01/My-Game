@@ -5,11 +5,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public bool gameStarted = false;
-    private int score;
+    public int score;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public Image gameOverOverlay;
+    public TMP_InputField playerNameInputField;
     private GameOver gameOver;
     public Button restartButton;
+    public Button sendScoreButton;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,12 +28,19 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver.gameOver)
         {
+            sendScoreButton.gameObject.SetActive(true);
             gameOverText.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
+            gameOverOverlay.gameObject.SetActive(true);
+            playerNameInputField.gameObject.SetActive(true);
         }
         else
         {
+            sendScoreButton.gameObject.SetActive(false);
             gameOverText.gameObject.SetActive(false);
+            restartButton.gameObject.SetActive(false);
+            gameOverOverlay.gameObject.SetActive(false);
+            playerNameInputField.gameObject.SetActive(false);
         }
 
 
