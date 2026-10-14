@@ -8,7 +8,7 @@ public class DowloadLeaderboardBh : MonoBehaviour
 {
     public string[] PlayersData;
     public List<string> PlayersName = new List <string>();
-    public List<int> PlayersScore = new List<int>();
+    public List<string> PlayersScore = new List<string>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,8 +59,14 @@ public class DowloadLeaderboardBh : MonoBehaviour
                     string[] lineElements = PlayersData[i].Split(',');
                     //string playerNameCleanup = lineElements[0].Trim('"');
                     string playerNameCleanup = lineElements[0].Substring(1, lineElements[0].Length - 2);
-                    PlayersName.Add(playerNameCleanup);                                                                                                                                                                
-                    
+                    PlayersName.Add(playerNameCleanup);
+
+                    string scoreCleanup = lineElements[1].Substring(1, lineElements[1].Length - 2);
+                    PlayersScore.Add(scoreCleanup);
+
+
+
+
                 }
             }
 

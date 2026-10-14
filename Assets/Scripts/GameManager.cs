@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private GameOver gameOver;
     public Button restartButton;
     public Button sendScoreButton;
-
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver.gameOver)
         {
+            
             sendScoreButton.gameObject.SetActive(true);
             gameOverText.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+              
             sendScoreButton.gameObject.SetActive(false);
             gameOverText.gameObject.SetActive(false);
             restartButton.gameObject.SetActive(false);
