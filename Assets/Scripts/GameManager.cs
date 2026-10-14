@@ -7,13 +7,10 @@ public class GameManager : MonoBehaviour
     public bool gameStarted = false;
     public int score;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
-    public Image gameOverOverlay;
-    public TMP_InputField playerNameInputField;
+
     private GameOver gameOver;
-    public Button restartButton;
-    public Button sendScoreButton;
-   
+    public CanvasGroup ScoreInsert;
+    public CanvasGroup Leaderboard;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,21 +25,11 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver.gameOver)
         {
-            
-            sendScoreButton.gameObject.SetActive(true);
-            gameOverText.gameObject.SetActive(true);
-            restartButton.gameObject.SetActive(true);
-            gameOverOverlay.gameObject.SetActive(true);
-            playerNameInputField.gameObject.SetActive(true);
+            ScoreInsert.gameObject.SetActive(true);
         }
         else
         {
-              
-            sendScoreButton.gameObject.SetActive(false);
-            gameOverText.gameObject.SetActive(false);
-            restartButton.gameObject.SetActive(false);
-            gameOverOverlay.gameObject.SetActive(false);
-            playerNameInputField.gameObject.SetActive(false);
+            ScoreInsert.gameObject.SetActive(false);
         }
 
 
@@ -77,5 +64,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void ActiveLeaderbord()
+    {
+       Leaderboard.gameObject.SetActive(true);
+    }
+     public void CloseLeaderboard()
+    {
+        Leaderboard.gameObject.SetActive(false);
+    }
 
 }
