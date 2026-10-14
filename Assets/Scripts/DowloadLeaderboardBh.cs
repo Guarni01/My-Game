@@ -9,6 +9,9 @@ public class DowloadLeaderboardBh : MonoBehaviour
     public string[] PlayersData;
     public List<string> PlayersName = new List <string>();
     public List<string> PlayersScore = new List<string>();
+    [Header("References:")]
+    public LeaderboardEntryBH EntryPrefab;
+    public Transform EntryGroup;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,6 +54,8 @@ public class DowloadLeaderboardBh : MonoBehaviour
             string pageContent = webRequest.downloadHandler.text;
 
             PlayersData = pageContent.Split('\n');
+            PlayersName.Clear();
+            PlayersScore.Clear();
 
             for (int i = 0; i < PlayersData.Length; i++)
             {
@@ -65,12 +70,29 @@ public class DowloadLeaderboardBh : MonoBehaviour
                     PlayersScore.Add(scoreCleanup);
 
 
-
+                    
 
                 }
             }
+            RefreshUI();
 
 
+        }
+    }
+
+    void RefreshUI()
+    {   //cerco vecchu figli
+        LeaderboardEntryBH[] oldEntries= EntryGroup.GetComponentsInChildren<LeaderboardEntryBH>();
+        //distruggo vecchi figli
+        for (int i = 0; i < oldEntries.Length; i++)
+        {
+           Destroy(oldEntries[i].gameObject);
+        }
+        //creo nuovi
+        for (int i = 0; i < PlayersName.Count; i++)
+        {
+           LeaderboardEntryBH currentEntry = Instantiate(EntryPrefab, EntryGroup);
+            currentEntry.SetEntryValues((i + 1).ToString(), PlayersName[i], PlayersScore[i]);
         }
     }
 }
